@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <meta property="og:type" content="" />
         <meta property="og:title" content="sakebaro" />
-        <meta property="og:description" content="Our mission is to spread full-on chain NFTs around the world." />
+        <meta property="og:description" content="" />
         <meta property="og:url" content="https://sakebaro.com" />
         <meta property="og:image" content="https://sakebaro.com/img/logo.png" />
         <meta property="og:site_name" content="sakebaro" />
@@ -15,187 +15,62 @@
         <meta name="twitter:site" content="https://sakebaro.com" />
         <meta name="twitter:creator" content="@sakebaro">
         <meta name="twitter:title" content="sakebaro" />
-        <meta name="twitter:description" content="Our mission is to spread full-on chain NFTs around the world." />
+        <meta name="twitter:description" content="" />
         <meta name="twitter:image" content="https://sakebaro.com/img/logo.png" />
         <meta name="twitter:image:alt" content="" />
-        <title>Sakebaro - Full on-chain avatar</title>
+        <title>Sakebaro</title>
         <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
         <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.3-rc.0/web3.min.js'></script>
-        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P3Z90P4VN4"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-P3Z90P4VN4');
-        </script>
-        <link href="./css/main_102701.css" rel="stylesheet" />
-        <script src="./js/main_102701.js"></script>
+        <link href="./css/main.css" rel="stylesheet" />
+        <script src="./js/main.js"></script>
     </head>
-    <body id="page-top">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#">Sakebaro</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item" id="wallet-connect">
-                          <a class="nav-link" href="#" onclick="connectWallet();">Connect Wallet</a>
-                        </li>
-                        <li class="nav-item" id="wallet-account">
-                          <span id="account-network"></span>
-                          &nbsp;
-                          <span id="account-address"></span>
-                        </li>
-                    </ul>
-                </div>
+    <body class="body">
+        <nav>
+            <div id="wallet-connect">
+              <a href="#" onclick="connectWallet();">Connect Wallet</a>
+            </div>
+            <div id="wallet-account">
+              <span id="account-network"></span>
+              &nbsp;
+              <span id="account-address"></span>
             </div>
         </nav>
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-heading">Don't let it fade away.</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#" onclick="mintToken();">Mint</a>
-                <div style="margin: 20px;" id="etherscan"></div>
-                <div class="minting">
-                  <h3>
-                    Will be possible to mint it step by step.
-                  </h3>
-                  <h3>
-                    <span id="current-token-id">X</span> / 99 avatars (1st)
-                  </h3>
-                  <h3>
-                    Mint fee: 0.05 ETH
-                  </h3>
-                </div>
+        <header>
+            <div>
+              <div class="">
+                <h2>Moon</h2>
+                <a href="#" class="btn" onclick="mintToken();">Mint</a>
+                Fee: 1 ETH
+              </div>
+              <div class="">
+                <h2>Japan</h2>
+                <a href="#" class="btn" onclick="mintToken();">Mint</a>
+                Fee: 0.5 ETH
+              </div>
+              <div class="">
+                <h2>Omotesando</h2>
+                <a href="#" class="btn" onclick="mintToken();">Mint</a>
+                Fee: 0.5 ETH
+              </div>
+              <div class="">
+                <h2>Nakameguro</h2>
+                <a href="#" class="btn" onclick="mintToken();">Mint</a>
+                Fee: 0.5 ETH
+              </div>
+              <div class="">
+                <h2>Kyoto</h2>
+                <a href="#" class="btn" onclick="mintToken();">Mint</a>
+                Fee: 0.5 ETH
+              </div>
             </div>
         </header>
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 50px;">
-                    <h2 class="section-heading text-uppercase">FULL ON-CHAIN AVATAR</h2>
-                    <div class="message-body">
-                      Our mission is to spread full-on chain NFTs around the world.
-                    </div>
-                </div>
-                <div class="row avatars">
-                  <div class="swiper">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide"><img class="img-fluid" src="./img/examples/1.svg" alt="..." /></div>
-                      <div class="swiper-slide"><img class="img-fluid" src="./img/examples/2.svg" alt="..." /></div>
-                      <div class="swiper-slide"><img class="img-fluid" src="./img/examples/3.svg" alt="..." /></div>
-                      <div class="swiper-slide"><img class="img-fluid" src="./img/examples/4.svg" alt="..." /></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                  </div>
-                </div>
-                <div style="margin: 50px; text-align: center;">
-                  <a class="btn btn-primary btn-xl text-uppercase" href="https://opensea.io/collection/sakebaro" target="_blank">View on OpenSea</a>
-                </div>
-                <div class="text-center" style="margin-top: 50px;">
-                  <h2>A collection of 9,999 sakebaros</h2>
-                  <div class="message-body">
-                    A sakebaro is algorithmically generated NFTs. <br/>
-                    Each sakebaro is uniquely generated from 8 types of face / eye / mouth components.<br>
-                    You will meet your sakebaro when you mint.<br/>
-                    To participate in minting, please link MetaMask from Connect Wallet.
-                  </div>
-                </div>
-                <div class="text-center" style="margin-top: 50px;">
-                  <h2>All elements stored on the Ethereum blockchain</h2>
-                  <div class="message-body">
-                    We have developed a way to store sakebaro images on the ETH network directly.<br/>
-                    Sakebaros will be stored as long as the ETH network exists.<br/>
-                    We believe that it would be wonderful if sakebaro could remain intact in the future and be passed on to our children.
-                  </div>
-                </div>
-                <div class="text-center" style="margin-top: 50px;">
-                  <h2>Story</h2>
-                  <div class="message-body">
-                    We believe that Web 3.0 should be truly decentralized. This is why we started sakebaro. <br/>
-                    We hope that users with sakebaros can create a powerful community, and decentralized NFTs will spread throughout the world.<br/>
-                    We think our sakebaros are cute (do you?), but we actually don’t have any designers on our team, so if any designers out there are interested in collaborating, please let us know.
-                  </div>
-                </div>
-            </div>
+        <section>
+            
         </section>
-        <section class="page-section" id="about">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Roadmap</h2>
-                </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Oct 20th 2021</h4>
-                                <h4 class="subheading">Project Lauch!</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted"></p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Oct 27th 2021</h4>
-                                <h4 class="subheading">The mint will take place at 13:00 UTC / 22:00 JST!</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted"></p></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image"></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>By the end of Dec 2021</h4>
-                                <h4 class="subheading">Collaborate with designers.</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Stay tuned for our announcement on Twitter!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4>
-                                Be Part
-                                <br />
-                                Of Our
-                                <br />
-                                Story!
-                            </h4>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="text-center" style="margin-top: 50px;">
-                  <h4>Join the sakebaro's community on Twitter or Discord!</h4>
-                </div>
-                <div class="row align-items-center">
-                    <div class="text-lg-start">
-                    </div>
-                    <div class="my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/sakebaro" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://discord.gg/FPfFu334yb" target="_blank"><i class="fab fa-discord"></i></a>
-                    </div>
-                    <div class="text-lg-end">
-                    </div>
-                </div>
+        <footer>
+            <div>
+              © 2021 Sakebaro
             </div>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

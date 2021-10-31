@@ -1,0 +1,15 @@
+version: "3"
+
+volumes:
+  sync-volume:
+    external: true
+
+services:
+
+  sakebaro:
+    image: nginx:latest
+    container_name: sakebaro
+    volumes:
+      - ./:/usr/share/nginx/html
+    ports:
+      - "127.0.0.1:80:80"

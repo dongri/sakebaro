@@ -1,5 +1,6 @@
 
 $ = (id) => { return document.getElementById(id); }
+const p = "@c64_g2EogHgn*6VuQdT6W7Z@c64_g2EogHgn*6VuQdT6W7Z";
 
 window.onload = async() => {
   await reload();
@@ -21,24 +22,6 @@ walletChanged = async () => {
 };
 
 reload = async () => {
-  let connected = localStorage.getItem('connected');
-  // if (connected) {
-  //   let { web3, account, networkId } = await getWeb3();
-  //   const networkName = getEnv("network")
-  //   if (networkName != "") {
-  //     $('account-network').innerHTML = networkName;
-  //     $('account-address').innerHTML = account.slice(0,6) + '...' + account.slice(-4);
-  //   } else {
-  //     $('account-network').innerHTML = 'Unsupported Network';
-  //     $('account-address').innerHTML = '';
-  //   }
-  //   $('wallet-connect').style.display = 'none';
-  //   $('wallet-account').style.display = 'block';
-  //   getMinint();
-  // } else {
-  //   $('wallet-connect').style.display = 'block';
-  //   $('wallet-account').style.display = 'none';
-  // }
 }
 
 getWeb3 = async () => {
@@ -50,40 +33,29 @@ getWeb3 = async () => {
     } else if (window.web3) {
       currentProvider = window.web3.currentProvider;
     } else {
-      alert('No Metamask (or other Web3 Provider) installed');
+      alert('Please install MetaMask');
     }
     if (currentProvider) {
       const web3 = new Web3(currentProvider);
       const networkId = await web3.eth.net.getId(); // const networkType = await web3.eth.net.getNetworkType();
       const accounts = (await web3.eth.getAccounts()) || web3.eth.accounts;
       const account = accounts[0];
-      localStorage.setItem('connected', true);
-      localStorage.setItem('account', account);
-      localStorage.setItem('network_id', networkId);
       return {web3, account, networkId}
     }
   } catch (err) {
     console.log(err);
   }
-};
-
-connectWallet = async() => {
-  try {
-    let { web3, account, networkId } = await getWeb3();
-    await reload();
-  } catch (err) {
-    console.log(err);
-  }
 }
 
-mintToken = async () => {
+mintToken = async (tokenType) => {
   try {
     let { web3, account, networkId } = await getWeb3();
     const nftContractABI = getNFTContractABI()
-    let nftContractAddress = getEnv('nft_address')
+    const tokenTypeData = tokenTypes[tokenType];
+    let nftContractAddress = await getEnv('nft_address')
     const contract = new web3.eth.Contract(nftContractABI, nftContractAddress)
-    const value = String(web3.utils.toWei('0.1', 'ether'));
-    const estimateGas = await contract.methods.mint(1).estimateGas({from: account, value: value});
+    const value = String(web3.utils.toWei(tokenTypeData["eth"], 'ether'));
+    const estimateGas = await contract.methods.mint(tokenType).estimateGas({from: account, value: value});
     contract.methods.mint(1).send(
       {
         from: account,
@@ -101,14 +73,32 @@ mintToken = async () => {
   }
 }
 
-getMinint = async () => {
+showStore = async (tokenType) => {
   try {
     let { web3, account, networkId } = await getWeb3();
     const nftContractABI = getNFTContractABI()
-    let nftContractAddress = getEnv('nft_address')
+    let nftContractAddress = await getEnv('nft_address')
     const contract = new web3.eth.Contract(nftContractABI, nftContractAddress)
-    const getCurrentTokenId = await contract.methods.getCurrentTokenId().call();
-    document.getElementById('current-token-id').innerHTML = getCurrentTokenId;
+    const tokenIds = await contract.methods.tokensOfOwner(account).call();
+
+    let have = false;
+    for(let tokenId of tokenIds) {
+      const tokenTypeChain = await contract.methods.getTypeByTokenId(tokenId).call();
+      if (tokenTypeChain == tokenType) {
+        have = true;
+        break;
+      }
+    };
+    if (have == true) {
+      const store = storeInfo[tokenType];
+      const address = decrypt(store["address"])
+      const tel = decrypt(store["tel"])
+      $("store-" + tokenType).style.display = "block";
+      $("store-" + tokenType + "-address").innerHTML = '住所: ' + address;
+      $("store-" + tokenType + "-tel").innerHTML = '電話: ' + tel;
+    } else {
+      alert("You don't seem to have the relevant NFTs, let's MINT them.");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -119,8 +109,8 @@ getNFTContractABI = () => {
   return JSON.parse(nftContractABI)
 }
 
-getEnv = (key) => {
-  const networkId = localStorage.getItem("network_id")
+getEnv = async (key) => {
+  let { web3, account, networkId } = await getWeb3();
   if (!["1", "4"].includes(String(networkId))) {
     return ""
   }
@@ -140,4 +130,49 @@ const env = {
     "1": "Mainnet",
     "4": "Rinkeby"
   }
+}
+
+const tokenTypes = {
+  "1": {
+    "eth": "1"
+  },
+  "2": {
+    "eth": "0.2"
+  },
+  "3": {
+    "eth": "0.2"
+  },
+  "4": {
+    "eth": "0.2"
+  },
+  "5": {
+    "eth": "0.2"
+  },
+}
+
+const storeInfo = {
+  "2": {
+    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
+    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
+  },
+  "3": {
+    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
+    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
+  },
+  "4": {
+    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
+    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
+  },
+  "5": {
+    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
+    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
+  },
+}
+
+encrypt = (word) => {
+  return CryptoJS.AES.encrypt(word, p).toString();
+}
+
+decrypt = (word) => {
+  return CryptoJS.AES.decrypt(word, p).toString(CryptoJS.enc.Utf8);
 }

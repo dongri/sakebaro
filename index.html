@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/responsive.css">
 		<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.3-rc.0/web3.min.js'></script>
+		<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js'></script>
 		<link rel="stylesheet" href="assets/css/style.css">
 		<script type="text/javascript" src="assets/js/main.js"></script>
 	</head>
@@ -93,7 +94,7 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="single-about-add-info contact-form">
-                      <div class="single-contact-btn" onclick="mintToken(); return false;">
+                      <div class="single-contact-btn" onclick="mintToken(1); return false;">
 											  <a href="#" class="contact-btn" role="button">Mint</a>
                       </div>
 										</div>
@@ -119,6 +120,13 @@
 								<p>
 									Owners of "nakameguro" can also become members of the "sakebaro" bars in Nakameguro. (Only members can book reservations for each bar.)
 								</p>
+								<div>
+									<a href="#" onclick="showStore(2); return false;" style="text-decoration: underline;">Store address</a>
+									<div id="store-2" style="display: none; margin-top: 10px;">
+										<div id="store-2-address"></div>
+										<div id="store-2-tel"></div>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="single-about-add-info">
@@ -134,7 +142,7 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="single-about-add-info contact-form">
-                      <div class="single-contact-btn" onclick="mintToken(); return false;">
+                      <div class="single-contact-btn" onclick="mintToken(2); return false;">
 											  <a href="#" class="contact-btn" role="button">Mint</a>
                       </div>
 										</div>
@@ -150,7 +158,6 @@
 					</div>
 				</div>
 
-
 				<div class="about-content">
 					<div class="row">
 						<div class="col-sm-6">
@@ -161,6 +168,13 @@
 								<p>
 									Owners of “omotesando RB” can also become members of  "sakebaro Omotesando", which will open December 2021. (Only members can book reservations for each bar.)
 								</p>
+								<div>
+									<a href="#" onclick="showStore(3); return false;" style="text-decoration: underline;">Store address</a>
+									<div id="store-3" style="display: none; margin-top: 10px;">
+										<div id="store-3-address"></div>
+										<div id="store-3-tel"></div>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="single-about-add-info">
@@ -176,7 +190,7 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="single-about-add-info contact-form">
-                      <div class="single-contact-btn" onclick="mintToken(); return false;">
+                      <div class="single-contact-btn" onclick="mintToken(3); return false;">
 											  <a href="#" class="contact-btn" role="button">Mint</a>
                       </div>
 										</div>
@@ -192,7 +206,6 @@
 					</div>
 				</div>
 
-
 				<div class="about-content">
 					<div class="row">
 						<div class="col-sm-6">
@@ -203,6 +216,13 @@
 								<p>
 									Owners of “omotesando WB” can also become members of  able to hold memberships for the "sakebaro Omotesando" store, which will open on December, 2021. (Only members can book reservations for each bar.)
 								</p>
+								<div>
+									<a href="#" onclick="showStore(4); return false;" style="text-decoration: underline;">Store address</a>
+									<div id="store-4" style="display: none; margin-top: 10px;">
+										<div id="store-4-address"></div>
+										<div id="store-4-tel"></div>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="single-about-add-info">
@@ -218,7 +238,7 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="single-about-add-info contact-form">
-                      <div class="single-contact-btn" onclick="mintToken(); return false;">
+                      <div class="single-contact-btn" onclick="mintToken(4); return false;">
 											  <a href="#" class="contact-btn" role="button">Mint</a>
                       </div>
 										</div>
@@ -244,6 +264,13 @@
 								<p>
 									Owners of “kyoto” can also become members of  "sakebaro Kyoto", which will open in spring 2022. (Only members can book reservations for each bar.)
 								</p>
+								<div>
+									<a href="#" onclick="showStore(5); return false;" style="text-decoration: underline;">Store address</a>
+									<div id="store-5" style="display: none; margin-top: 10px;">
+										<div id="store-5-address"></div>
+										<div id="store-5-tel"></div>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="single-about-add-info">
@@ -259,7 +286,7 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="single-about-add-info contact-form">
-                      <div class="single-contact-btn" onclick="mintToken(); return false;">
+                      <div class="single-contact-btn" onclick="mintToken(5); return false;">
 											  <a href="#" class="contact-btn" role="button">Mint</a>
                       </div>
 										</div>

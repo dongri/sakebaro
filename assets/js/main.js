@@ -56,7 +56,7 @@ mintToken = async (tokenType) => {
     const contract = new web3.eth.Contract(nftContractABI, nftContractAddress)
     const value = String(web3.utils.toWei(tokenTypeData["eth"], 'ether'));
     const estimateGas = await contract.methods.mint(tokenType).estimateGas({from: account, value: value});
-    contract.methods.mint(1).send(
+    contract.methods.mint(tokenType).send(
       {
         from: account,
         value: value,
@@ -84,7 +84,7 @@ showStore = async (tokenType) => {
     let have = false;
     for(let tokenId of tokenIds) {
       const tokenTypeChain = await contract.methods.getTypeByTokenId(tokenId).call();
-      if (tokenTypeChain == tokenType) {
+      if (tokenTypeChain == tokenType || String(tokenTypeChain) == "1") {
         have = true;
         break;
       }
@@ -93,11 +93,11 @@ showStore = async (tokenType) => {
       const store = storeInfo[tokenType];
       const address = decrypt(store["address"])
       const tel = decrypt(store["tel"])
-      $("store-" + tokenType).style.display = "block";
-      $("store-" + tokenType + "-address").innerHTML = '住所: ' + address;
-      $("store-" + tokenType + "-tel").innerHTML = '電話: ' + tel;
+      document.getElementById("store-" + tokenType).style.display = "block";
+      document.getElementById("store-" + tokenType + "-address").innerHTML = '住所: ' + address;
+      document.getElementById("store-" + tokenType + "-tel").innerHTML = '電話: ' + tel;
     } else {
-      alert("You don't seem to have the relevant NFTs, let's MINT them.");
+      alert("You don't seem to have the relevant NFTs, let's Mint them.");
     }
   } catch (err) {
     console.log(err);
@@ -120,7 +120,7 @@ getEnv = async (key) => {
 const env = {
   "nft_address": {
     "1": "",
-    "4": "0x5325B9f383BD0CFf176DC6b1914CfB5Cc9740D35"
+    "4": "0xb5277aA562A3d0ea8ABCDf6db07304C5dFf86e3C"
   },
   "etherscan": {
     "1": "https://etherscan.io",

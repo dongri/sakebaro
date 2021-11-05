@@ -91,11 +91,13 @@ showStore = async (tokenType) => {
     };
     if (have == true) {
       const store = storeInfo[tokenType];
-      const address = decrypt(store["address"])
+      const location = decrypt(store["location"])
       const tel = decrypt(store["tel"])
+      const reservation = decrypt(store["reservation"])
       document.getElementById("store-" + tokenType).style.display = "block";
-      document.getElementById("store-" + tokenType + "-address").innerHTML = '住所: ' + address;
-      document.getElementById("store-" + tokenType + "-tel").innerHTML = '電話: ' + tel;
+      document.getElementById("store-" + tokenType + "-location").innerHTML = 'Location: ' + location;
+      document.getElementById("store-" + tokenType + "-tel").innerHTML = 'Tel: ' + tel;
+      document.getElementById("store-" + tokenType + "-reservation").innerHTML = 'Reservation: ' + reservation;
     } else {
       alert("You don't seem to have the relevant NFTs, let's Mint them.");
     }
@@ -152,21 +154,10 @@ const tokenTypes = {
 
 const storeInfo = {
   "2": {
-    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
-    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
-  },
-  "3": {
-    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
-    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
-  },
-  "4": {
-    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
-    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
-  },
-  "5": {
-    "address": "U2FsdGVkX1/Bo4sBsEMC5nBRvONygQuKuAo0UJ24NqA=",
-    "tel": "U2FsdGVkX18Bq1eVXmZWz6WJRIE70BxpkxdC8j0eUp0="
-  },
+    "location": "U2FsdGVkX18FnkyLS3gIsZqMc7zKwJ29F6iN5CNe8q5KzInPtlpn3hxXnoTLWuiyejCdYrrZMsWVVkM7mJY9t0GidtmcsboiWeGPJh8zF0sqISGdpj82dy/Wdx3F1nruPkJBHnpVadf0z4rPV2XZzKW5SSsaRPqS3ui+jzrJIB4=",
+    "tel": "U2FsdGVkX18FYAchlnvidm0IRr+GOMsT8aLjnVK71jFT8P4lARX+vsSm8QkL4zyU",
+    "reservation": "U2FsdGVkX1+//v2t+39OW+rzlNvAfuBSYNWHKvFfxYz6nGZ7N0NWnhrX9+WknpTxXCDdAWlja6Oxsmz8PSGBsg=="
+  }
 }
 
 encrypt = (word) => {

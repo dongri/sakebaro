@@ -97,7 +97,7 @@ showStore = async (tokenType) => {
       document.getElementById("store-" + tokenType).style.display = "block";
       document.getElementById("store-" + tokenType + "-location").innerHTML = 'Location: ' + location;
       document.getElementById("store-" + tokenType + "-tel").innerHTML = 'Tel: ' + tel;
-      document.getElementById("store-" + tokenType + "-reservation").innerHTML = 'Reservation: ' + reservation;
+      document.getElementById("store-" + tokenType + "-reservation").innerHTML = 'Reservation: <a href="' + reservation + '" target="_blank">' + reservation + '</a>';
     } else {
       alert("You don't seem to have the relevant NFTs, let's Mint them.");
     }

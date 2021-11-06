@@ -92,11 +92,9 @@ showStore = async (tokenType) => {
     if (have == true) {
       const store = storeInfo[tokenType];
       const location = decrypt(store["location"])
-      const tel = decrypt(store["tel"])
       const reservation = decrypt(store["reservation"])
       document.getElementById("store-" + tokenType).style.display = "block";
       document.getElementById("store-" + tokenType + "-location").innerHTML = 'Location: ' + location;
-      document.getElementById("store-" + tokenType + "-tel").innerHTML = 'Tel: ' + tel;
       document.getElementById("store-" + tokenType + "-reservation").innerHTML = 'Reservation: <a href="' + reservation + '" target="_blank">' + reservation + '</a>';
     } else {
       alert("You don't seem to have the relevant NFTs, let's Mint them.");
@@ -121,7 +119,7 @@ getEnv = async (key) => {
 
 const env = {
   "nft_address": {
-    "1": "",
+    "1": "0x787d0867F00eDf85C3fbD011D43D46977cc3A527",
     "4": "0xb5277aA562A3d0ea8ABCDf6db07304C5dFf86e3C"
   },
   "etherscan": {
@@ -147,15 +145,11 @@ const tokenTypes = {
   "4": {
     "eth": "0.2"
   },
-  "5": {
-    "eth": "0.2"
-  },
 }
 
 const storeInfo = {
   "2": {
     "location": "U2FsdGVkX18FnkyLS3gIsZqMc7zKwJ29F6iN5CNe8q5KzInPtlpn3hxXnoTLWuiyejCdYrrZMsWVVkM7mJY9t0GidtmcsboiWeGPJh8zF0sqISGdpj82dy/Wdx3F1nruPkJBHnpVadf0z4rPV2XZzKW5SSsaRPqS3ui+jzrJIB4=",
-    "tel": "U2FsdGVkX18FYAchlnvidm0IRr+GOMsT8aLjnVK71jFT8P4lARX+vsSm8QkL4zyU",
     "reservation": "U2FsdGVkX1+//v2t+39OW+rzlNvAfuBSYNWHKvFfxYz6nGZ7N0NWnhrX9+WknpTxXCDdAWlja6Oxsmz8PSGBsg=="
   }
 }

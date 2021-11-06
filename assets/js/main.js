@@ -69,7 +69,7 @@ mintToken = async (tokenType) => {
         $('etherscan').innerHTML = '<a href="'+ getEnv("etherscan") + '/tx/' + txHash + '" target="_blank" style="font-size: large">Etherscan</a>';
       })
   } catch (err) {
-    alert(err);
+    alert(err.message);
   }
 }
 

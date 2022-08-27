@@ -33,7 +33,8 @@ getWeb3 = async () => {
     } else if (window.web3) {
       currentProvider = window.web3.currentProvider;
     } else {
-      alert('Please install MetaMask');
+      // alert('Please install MetaMask');
+      window.open('https://metamask.app.link/dapp/sakebaro.com', '_blank');
     }
     if (currentProvider) {
       const web3 = new Web3(currentProvider);
